@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* =============================== GALLERY THEME =============================== */
+
+    --primary: #FF6E42;       /* Main colour. Must be darker than secondary. */
+    --tertiary: #FF6E4280;    /* Selection colour. Primary colour at 50% opacity. */
+
+    --background: #050505;    /* Body background. Must be a shade of black. */
+
+    --text: #FFFFFF;           /* White for dark mode. */
+    --sub-text: #666666;       /* Body text that is not white. Must be grey-ish. */
+    --tech-label: #444444;     /* Labels for technical details. Dark Grey. */
+    --tech-values: #AAAAAA;    /* Values for technical details. Light Grey. */
+    --copy-text: #383838;      /* Copyright text. Must be dark grey-ish. */
+
+    --shadow: #FFFFFF0D;       /* 5% opacity white shadow. */
+    --box-bg: #000000;         /* Black navbar. */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: var(--tertiary);
+    color: var(--text);
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    margin: auto;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--box-bg);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 2px 5px var(--shadow);
+    color: var(--text);
+}
+
+.intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .intro-content {
+        text-align: center;
+        transition: opacity 0.1s ease-out; /* Super snappy response to scroll */
+
+        h1 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        p {
+            color: var(--sub-text);
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .scroll-down {
+        position: absolute;
+        bottom: 30px;
+        font-size: 2rem;
+        color: var(--sub-text);
+        animation: bounce 2s infinite;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+}
+
+body {
+    background-color: var(--background);
+}
+
+.back-link {
+    color: var(--sub-text);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-link:hover {
+    color: var(--text);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+
+    .accent {
+        color: var(--primary);
+    }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.exhibit {
+    margin-bottom: 8rem;
+    opacity: 0;  /* Animation start state */
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.exhibit.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.frame {
+    width: 100%;
+    display: flex;       
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    transition: transform 0.5s ease;
+
+    img {
+        max-height: 70vh; 
+        width: auto;      
+        max-width: 100%;  
+        display: block;
+        box-shadow: 0 20px 50px 15px var(--shadow);
+
+        /* --- BLACKOUT GLITCH FIX --- */
+        will-change: transform; 
+        transform: translateZ(0);
+    }
+}
+
+.exhibit:hover .frame {
+    transform: scale(1.01);
+}
+
+.plaque {
+    max-width: 100%; /* Limit width so not full screen */
+    margin: 0 auto;
+    text-align: center;
+
+    .title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+    }
+
+    .date {
+        font-size: 0.8rem;
+        color: var(--sub-text);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+    }
+
+    .separator {
+        width: 40px;
+        height: 1px;
+        background-color: var(--primary);
+        margin: 0 auto 1.5rem;
+    }
+}
+
+.tech-specs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 0.75rem;
+
+    .spec {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .label {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.6rem;
+        color: var(--tech-label);
+    }
+
+    .value {
+        font-family: 'Poppins', sans-serif;
+        color: var(--tech-values);
+    }
+}
+
+.copyright {
+    font-family: 'Poppins', sans-serif;
+    margin: auto;
+    padding: 1rem;
+    color: var(--copy-text);
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: var(--box-bg);
+    transition: all 0.3s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+@media (max-width: 768px) {  /* Mobile Adjustments */
+    .gallery-intro h1 { font-size: 2.5rem; }
+    .tech-specs { gap: 1rem; }
+}
