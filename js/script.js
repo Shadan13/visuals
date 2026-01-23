@@ -3,20 +3,15 @@ const navbar = document.querySelector('nav');
 
 window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
+    const navbarHeight = navbar.offsetHeight;
 
     if (prevScrollPos < currentScrollPos) {
-        navbar.style.transition = 'top 0.8s ease-in-out';
-        navbar.style.top = '-100px'; // hide
+        navbar.style.top = `-${navbarHeight+5}px`; // hide
     } else {
-        navbar.style.transition = 'top 0.8s ease-in-out';
         navbar.style.top = '0'; // show
     }
 
     prevScrollPos = currentScrollPos;
-
-    navbar.addEventListener('transitionend', () => {
-        navbar.style.transition = 'ease 0.3s'; // change transition duration after transformation is complete
-    });
 });
 
 const introContent = document.querySelector('.intro-content');

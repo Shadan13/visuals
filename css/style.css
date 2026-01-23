@@ -17,6 +17,8 @@
 
     --shadow: #FFFFFF0D;       /* 5% opacity white shadow. */
     --box-bg: #000000;         /* Black navbar. */
+
+    /* ============================================================================= */
 }
 
 * {
@@ -53,7 +55,7 @@ nav {
     position: fixed;
     width: 100%;
     top: 0;
-    transition: all 0.3s ease;
+    transition: top 0.8s ease-in-out, background-color 0.3s ease;
     z-index: 100;
     box-shadow: 0 2px 5px var(--shadow);
     color: var(--text);
@@ -69,7 +71,7 @@ nav {
 
     .intro-content {
         text-align: center;
-        transition: opacity 0.1s ease-out; /* Super snappy response to scroll */
+        transition: opacity 0.1s ease-out;
 
         h1 { 
             font-family: 'Playfair Display', serif;
@@ -136,6 +138,12 @@ body {
 }
 
 .exhibit {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     margin-bottom: 8rem;
     opacity: 0;  /* Animation start state */
     transform: translateY(50px);
@@ -158,9 +166,9 @@ body {
     img {
         max-height: 70vh; 
         width: auto;      
-        max-width: 100%;  
+        max-width: 90%;  
         display: block;
-        box-shadow: 0 20px 50px 15px var(--shadow);
+        box-shadow: 0 20px 50px 10px var(--shadow);
 
         /* --- BLACKOUT GLITCH FIX --- */
         will-change: transform; 
@@ -173,16 +181,18 @@ body {
 }
 
 .plaque {
-    max-width: 100%; /* Limit width so not full screen */
     margin: 0 auto;
     text-align: center;
 
     .title {
         font-family: 'Playfair Display', serif;
         font-size: 1.8rem;
-        color: var(--text);
         margin-bottom: 0.5rem;
         font-weight: 400;
+
+        a {
+            color: var(--text);
+        }
     }
 
     .date {
